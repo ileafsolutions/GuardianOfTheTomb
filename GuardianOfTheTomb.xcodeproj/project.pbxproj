@@ -24,6 +24,9 @@
 		C769957918EB49190001B9CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955418EB49180001B9CA /* UIKit.framework */; };
 		C769958118EB49190001B9CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C769957F18EB49190001B9CA /* InfoPlist.strings */; };
 		C769958318EB49190001B9CA /* GuardianOfTheTombTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C769958218EB49190001B9CA /* GuardianOfTheTombTests.m */; };
+		C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868C18EB673B005F6CAA /* background-music-aac.caf */; };
+		C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868D18EB673B005F6CAA /* pew-pew-lei.caf */; };
+		C779869118EB673B005F6CAA /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C779868E18EB673B005F6CAA /* sprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		C769957E18EB49190001B9CA /* GuardianOfTheTombTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GuardianOfTheTombTests-Info.plist"; sourceTree = "<group>"; };
 		C769958018EB49190001B9CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C769958218EB49190001B9CA /* GuardianOfTheTombTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardianOfTheTombTests.m; sourceTree = "<group>"; };
+		C779868C18EB673B005F6CAA /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
+		C779868D18EB673B005F6CAA /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		C779868E18EB673B005F6CAA /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 		C769954418EB49180001B9CA = {
 			isa = PBXGroup;
 			children = (
+				C779868918EB6724005F6CAA /* Placeholder files */,
 				C769955818EB49180001B9CA /* GuardianOfTheTomb */,
 				C769957C18EB49190001B9CA /* GuardianOfTheTombTests */,
 				C769954F18EB49180001B9CA /* Frameworks */,
@@ -162,6 +169,32 @@
 				C769957F18EB49190001B9CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C779868918EB6724005F6CAA /* Placeholder files */ = {
+			isa = PBXGroup;
+			children = (
+				C779868A18EB673B005F6CAA /* SpriteKitSimpleGameResources */,
+			);
+			name = "Placeholder files";
+			sourceTree = "<group>";
+		};
+		C779868A18EB673B005F6CAA /* SpriteKitSimpleGameResources */ = {
+			isa = PBXGroup;
+			children = (
+				C779868B18EB673B005F6CAA /* Sounds */,
+				C779868E18EB673B005F6CAA /* sprites.atlas */,
+			);
+			path = SpriteKitSimpleGameResources;
+			sourceTree = "<group>";
+		};
+		C779868B18EB673B005F6CAA /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C779868C18EB673B005F6CAA /* background-music-aac.caf */,
+				C779868D18EB673B005F6CAA /* pew-pew-lei.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,10 +274,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C779869118EB673B005F6CAA /* sprites.atlas in Resources */,
+				C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */,
 				C769955D18EB49180001B9CA /* InfoPlist.strings in Resources */,
 				C769957018EB49180001B9CA /* Images.xcassets in Resources */,
 				C769956E18EB49180001B9CA /* Spaceship.png in Resources */,
 				C769956618EB49180001B9CA /* Main.storyboard in Resources */,
+				C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +509,7 @@
 				C769958818EB49190001B9CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C769958918EB49190001B9CA /* Build configuration list for PBXNativeTarget "GuardianOfTheTombTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +518,7 @@
 				C769958B18EB49190001B9CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
