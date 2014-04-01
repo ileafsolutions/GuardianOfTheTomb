@@ -14,16 +14,10 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.0 blue:0.3 alpha:.5];
+        self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.3 alpha:.1];
         
-//        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
-//        myLabel.text = @"Hello, World!";
-//        myLabel.fontSize = 30;
-//        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-//                                       CGRectGetMidY(self.frame));
         
-//        [self addChild:myLabel];
         
         
         //initialize the player sprite
@@ -35,6 +29,8 @@
         
         
     }
+    
+    
     return self;
 }
 
@@ -48,18 +44,18 @@
     //determine if the touch was on the right side of the screen
     if (location.x < self.size.width / 2)
     {
-        SKAction * moveLeft = [SKAction moveBy:CGVectorMake(-40, 0) duration:1];
+        SKAction * moveLeft = [SKAction moveBy:CGVectorMake(-120, 0) duration:1];
         [self.playerSprite runAction:[SKAction repeatActionForever:moveLeft]];
     }
+    //determine if the touch was on the left side of the screen
     else if (location.x > self.size.width /2)
     {
-        SKAction * moveRight = [SKAction moveBy:CGVectorMake(40, 0) duration:1];
+        SKAction * moveRight = [SKAction moveBy:CGVectorMake(120, 0) duration:1];
         [self.playerSprite runAction:[SKAction repeatActionForever:moveRight]];
     }
     
     
-    //determine if the touch was on the left side of the screen
-        
+    
     SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
 //        [sprite runAction:[SKAction repeatActionForever:action]];
