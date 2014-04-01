@@ -41,7 +41,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    UITouch *touch = [touches anyObject];
+    UITouch* touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
     
@@ -49,12 +49,12 @@
     if (location.x < self.size.width / 2)
     {
         SKAction * moveLeft = [SKAction moveBy:CGVectorMake(-40, 0) duration:1];
-        [self.playerSprite runAction:moveLeft];
+        [self.playerSprite runAction:[SKAction repeatActionForever:moveLeft]];
     }
     else if (location.x > self.size.width /2)
     {
         SKAction * moveRight = [SKAction moveBy:CGVectorMake(40, 0) duration:1];
-        [self.playerSprite runAction:moveRight];
+        [self.playerSprite runAction:[SKAction repeatActionForever:moveRight]];
     }
     
     
