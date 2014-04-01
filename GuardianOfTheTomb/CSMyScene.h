@@ -10,4 +10,6 @@
 
 @interface CSMyScene : SKScene
 
+@property SKSpriteNode * playerSprite;
+
 @end
