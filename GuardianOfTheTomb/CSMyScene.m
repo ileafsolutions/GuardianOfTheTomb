@@ -14,7 +14,11 @@
     CGRect _rightMoveRect;
     float _circleRadius;
     float _circleCenterX, _circleCenterY;
+    float _playerAngle;
+    BOOL _playerIsMoving;
+    float _addAmount;
 }
+
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -41,7 +45,9 @@
         
         //initialize the player sprite
         self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
-        self.playerSprite.position = CGPointMake(_circleCenterX, _circleCenterY + _circleRadius);
+        _playerAngle = 90;
+        self.playerSprite.position = CGPointMake( [self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+        _playerIsMoving = FALSE;
         
         //add the player sprite to the scene
         [self addChild:self.playerSprite];
@@ -54,24 +60,67 @@
     return self;
 }
 
+-(float) playerXPosition:(float) degrees
+{
+    return _circleCenterX + cosf(degrees * (M_PI / 180)) * _circleRadius;
+    
+}
+
+-(float) playerYPosition:(float) degrees
+{
+    return _circleCenterY + sinf(degrees * (M_PI / 180)) * _circleRadius;
+}
+
+-(void) addToAngle
+{
+    _playerAngle += _addAmount;
+
+}
+
+//0 is left, 1 is right
+-(void) startMovingPlayer:(int) direction
+{
+    _addAmount = (direction == 0) ? 2.0f : -2.0f;
+    _playerIsMoving = true;
+    
+    
+//    while (_playerIsMoving)
+//    {
+        SKAction * changeAngle = [SKAction performSelector:@selector(addToAngle) onTarget:self];
+        SKAction * moveLeft = [SKAction moveTo:CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]) duration:0.5f];
+        [self.playerSprite runAction:moveLeft];
+//        SKAction *action = [SKAction rotateToAngle:_playerAngle duration:1];
+        [self.playerSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[changeAngle, moveLeft]]]];
+//    }
+}
+
+//0 is left, 1 is right
+-(void) stopMovingPlayer
+{
+//    _playerIsMoving = FALSE;
+    [self.playerSprite removeAllActions];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
+    
+    
     
     UITouch* touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInNode:self];
     
     
-    //determine if the touch was on the right side of the screen
+    //determine if the touch was on the left side of the screen
     if (CGRectContainsPoint(_leftMoveRect, touchPoint))
     {
-        SKAction * moveLeft = [SKAction moveBy:CGVectorMake(-140, 0) duration:1];
-        [self.playerSprite runAction:[SKAction repeatActionForever:moveLeft]];
+        [self startMovingPlayer:0];
+
     }
-    //determine if the touch was on the left side of the screen
+    //determine if the touch was on the right side of the screen
     else if (CGRectContainsPoint(_rightMoveRect, touchPoint))
     {
-        SKAction * moveRight = [SKAction moveBy:CGVectorMake(140, 0) duration:1];
-        [self.playerSprite runAction:[SKAction repeatActionForever:moveRight]];
+
+        [self startMovingPlayer:1];
     }
     
     
@@ -87,7 +136,7 @@
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.playerSprite removeAllActions];
+   [self stopMovingPlayer];
 }
 
 
