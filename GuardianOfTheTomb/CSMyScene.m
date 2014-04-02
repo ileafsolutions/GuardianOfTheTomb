@@ -17,6 +17,8 @@
     float _playerAngle;
     BOOL _playerIsMoving;
     float _addAmount;
+//    UIControl * _leftControl, * _rightControl;
+    SKShapeNode * _playerBoundingCircle;
 }
 
 
@@ -28,20 +30,21 @@
         
         
         //create the bounding rect for the player's movement
-        SKShapeNode * playerBoundingCircle = [[SKShapeNode alloc] init];
+        _playerBoundingCircle = [[SKShapeNode alloc] init];
         CGMutablePathRef myPath = CGPathCreateMutable();
         
         _circleRadius = (self.frame.size.width / 8.0f);
         _circleCenterX = self.frame.size.width/2.0f;
         _circleCenterY = self.frame.size.height / 2.0f;
         CGPathAddArc(myPath, NULL, _circleCenterX, _circleCenterY, _circleRadius, 0, M_PI*2, YES);
-        playerBoundingCircle.path = myPath;
-        playerBoundingCircle.lineWidth = 1.0f;
-        playerBoundingCircle.strokeColor = [SKColor blackColor];
-        playerBoundingCircle.hidden = FALSE;
+        _playerBoundingCircle.path = myPath;
+        _playerBoundingCircle.lineWidth = 1.0f;
+        _playerBoundingCircle.strokeColor = [SKColor blackColor];
+        _playerBoundingCircle.hidden = FALSE;
         
         // Initialize the move rectangles.
         CGRectDivide(self.frame, &_leftMoveRect, &_rightMoveRect, self.frame.size.width / 2.0f, CGRectMinXEdge);
+
         
         //initialize the player sprite
         self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
@@ -51,7 +54,8 @@
         
         //add the player sprite to the scene
         [self addChild:self.playerSprite];
-        [self addChild:playerBoundingCircle];
+        [self addChild:_playerBoundingCircle];
+        
         
         
     }
@@ -77,21 +81,27 @@
 
 }
 
+
+
 //0 is left, 1 is right
--(void) startMovingPlayer:(int) direction
+-(void) startMovingPlayerLeft
 {
-    _addAmount = (direction == 0) ? 2.0f : -2.0f;
-    _playerIsMoving = true;
-    
-    
-//    while (_playerIsMoving)
-//    {
-        SKAction * changeAngle = [SKAction performSelector:@selector(addToAngle) onTarget:self];
-        SKAction * moveLeft = [SKAction moveTo:CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]) duration:0.5f];
-        [self.playerSprite runAction:moveLeft];
-//        SKAction *action = [SKAction rotateToAngle:_playerAngle duration:1];
-        [self.playerSprite runAction:[SKAction repeatActionForever:[SKAction sequence:@[changeAngle, moveLeft]]]];
-//    }
+//    _addAmount = (direction == 0) ? 2.0f : -2.0f;
+    _addAmount = 2.0f;
+    _playerAngle += _addAmount;
+    self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+    SKAction * moveLeft = [SKAction performSelector:@selector(startMovingPlayerLeft) onTarget:self];
+    [self.playerSprite runAction:moveLeft];
+
+}
+
+-(void) startMovingPlayerRight
+{
+    _addAmount = -2.0f;
+    _playerAngle += _addAmount;
+    self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+    SKAction * moveRight = [SKAction performSelector:@selector(startMovingPlayerRight) onTarget:self];
+    [self.playerSprite runAction:moveRight];
 }
 
 //0 is left, 1 is right
@@ -113,20 +123,21 @@
     //determine if the touch was on the left side of the screen
     if (CGRectContainsPoint(_leftMoveRect, touchPoint))
     {
-        [self startMovingPlayer:0];
+        [self startMovingPlayerLeft];
 
+        
     }
     //determine if the touch was on the right side of the screen
     else if (CGRectContainsPoint(_rightMoveRect, touchPoint))
     {
 
-        [self startMovingPlayer:1];
+        [self startMovingPlayerRight];
     }
     
     
     
-    SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
+//    SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+    
 //        [sprite runAction:[SKAction repeatActionForever:action]];
     
         
@@ -136,7 +147,7 @@
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-   [self stopMovingPlayer];
+    [self.playerSprite removeAllActions];
 }
 
 
