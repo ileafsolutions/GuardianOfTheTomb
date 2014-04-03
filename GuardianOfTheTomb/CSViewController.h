@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface CSViewController : UIViewController
+@interface CSViewController : UIViewController <SKPhysicsContactDelegate>
 
 @end

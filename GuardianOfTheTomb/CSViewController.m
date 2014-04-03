@@ -10,6 +10,10 @@
 #import "CSMyScene.h"
 
 @implementation CSViewController
+{
+    SKView* _gameView;
+    SKScene* _gameScene;
+}
 
 //- (void)viewDidLoad
 //{
@@ -36,16 +40,16 @@
     [super viewWillLayoutSubviews];
     
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    _gameView = (SKView *)self.view;
+    _gameView.showsFPS = YES;
+    _gameView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [CSMyScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    _gameScene = [CSMyScene sceneWithSize:_gameView.bounds.size];
+    _gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [_gameView presentScene:_gameScene];
     
     
 }

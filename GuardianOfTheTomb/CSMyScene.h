@@ -11,5 +11,5 @@
 @interface CSMyScene : SKScene
 
 @property SKSpriteNode * playerSprite;
-
+@property float rateOfFire;
 @end

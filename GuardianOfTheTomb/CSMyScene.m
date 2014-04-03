@@ -15,52 +15,46 @@
     float _circleRadius;
     float _circleCenterX, _circleCenterY;
     float _playerAngle;
-    BOOL _playerIsMoving;
     float _addAmount;
-//    UIControl * _leftControl, * _rightControl;
     SKShapeNode * _playerBoundingCircle;
 }
 
 
--(id)initWithSize:(CGSize)size {    
-    if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
+-(id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size])
+    {
+        // Configure background color of scene.
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         
-        
-        //create the bounding rect for the player's movement
+        // Create the bounding circle for the player's movement
         _playerBoundingCircle = [[SKShapeNode alloc] init];
         CGMutablePathRef myPath = CGPathCreateMutable();
         
+        // Configure circle radius and position.
         _circleRadius = (self.frame.size.width / 8.0f);
         _circleCenterX = self.frame.size.width/2.0f;
         _circleCenterY = self.frame.size.height / 2.0f;
+        
+        // Add the circle to the path with a few configurations.
         CGPathAddArc(myPath, NULL, _circleCenterX, _circleCenterY, _circleRadius, 0, M_PI*2, YES);
         _playerBoundingCircle.path = myPath;
-        _playerBoundingCircle.lineWidth = 1.0f;
-        _playerBoundingCircle.strokeColor = [SKColor blackColor];
         _playerBoundingCircle.hidden = TRUE;
         
-        // Initialize the move rectangles.
+        // Initialize the left and right move rectangles.
         CGRectDivide(self.frame, &_leftMoveRect, &_rightMoveRect, self.frame.size.width / 2.0f, CGRectMinXEdge);
 
-        
         //initialize the player sprite
         self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"archer_placeholder"];
         _playerAngle = 90;
         self.playerSprite.position = CGPointMake( [self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
-        _playerIsMoving = FALSE;
         
-        //add the player sprite to the scene
+        // Add the player sprite to the scene
         [self addChild:self.playerSprite];
         [self addChild:_playerBoundingCircle];
         
-        
-        
     }
-    
-    
+
     return self;
 }
 
@@ -87,11 +81,8 @@
 }
 
 
-
-//0 is left, 1 is right
 -(void) startMovingPlayerLeft
 {
-//    _addAmount = (direction == 0) ? 2.0f : -2.0f;
     _addAmount = 3.0f;
     _playerAngle += _addAmount;
     self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
@@ -111,56 +102,41 @@
     [self.playerSprite runAction:rotateSprite];
     SKAction * moveRight = [SKAction performSelector:@selector(startMovingPlayerRight) onTarget:self];
     [self.playerSprite runAction:moveRight];
-
     
 }
 
-//0 is left, 1 is right
 -(void) stopMovingPlayer
 {
-//    _playerIsMoving = FALSE;
     [self.playerSprite removeAllActions];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    
-    
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch* touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInNode:self];
-    
     
     //determine if the touch was on the left side of the screen
     if (CGRectContainsPoint(_leftMoveRect, touchPoint))
     {
         [self startMovingPlayerLeft];
-
         
     }
     //determine if the touch was on the right side of the screen
     else if (CGRectContainsPoint(_rightMoveRect, touchPoint))
     {
-
         [self startMovingPlayerRight];
     }
-    
-    
-    
-//    SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-    
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-    
-        
-    
 }
-
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.playerSprite removeAllActions];
 }
 
+-(void) fireBow
+{
+    
+}
 
 
 -(void)update:(CFTimeInterval)currentTime {
