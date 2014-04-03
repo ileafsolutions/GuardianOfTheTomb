@@ -26,7 +26,12 @@
 		C769958318EB49190001B9CA /* GuardianOfTheTombTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C769958218EB49190001B9CA /* GuardianOfTheTombTests.m */; };
 		C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868C18EB673B005F6CAA /* background-music-aac.caf */; };
 		C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868D18EB673B005F6CAA /* pew-pew-lei.caf */; };
-		C779869118EB673B005F6CAA /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C779868E18EB673B005F6CAA /* sprites.atlas */; };
+		C7B18ADB18EE168800A85392 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C7B18ADA18EE168800A85392 /* sprites.atlas */; };
+		C7B18ADD18EE180800A85392 /* archer_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B18ADC18EE180800A85392 /* archer_4-3.png */; };
+		C7B18ADF18EE1A2300A85392 /* archer_4-3_FLIPPED.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B18ADE18EE1A2300A85392 /* archer_4-3_FLIPPED.png */; };
+		C7B18AE218EE1B5600A85392 /* CSGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B18AE118EE1B5600A85392 /* CSGameModel.m */; };
+		C7B18AE518EE23D900A85392 /* idol_4-3_GLOW.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B18AE318EE23D900A85392 /* idol_4-3_GLOW.png */; };
+		C7B18AE618EE23D900A85392 /* idol_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C7B18AE418EE23D900A85392 /* idol_4-3.png */; };
 		C7CD458B18ED093F0045B14D /* archer_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CD458A18ED093F0045B14D /* archer_placeholder.png */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +71,13 @@
 		C769958218EB49190001B9CA /* GuardianOfTheTombTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardianOfTheTombTests.m; sourceTree = "<group>"; };
 		C779868C18EB673B005F6CAA /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		C779868D18EB673B005F6CAA /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
-		C779868E18EB673B005F6CAA /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		C7B18ADA18EE168800A85392 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		C7B18ADC18EE180800A85392 /* archer_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archer_4-3.png"; sourceTree = "<group>"; };
+		C7B18ADE18EE1A2300A85392 /* archer_4-3_FLIPPED.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archer_4-3_FLIPPED.png"; sourceTree = "<group>"; };
+		C7B18AE018EE1B5600A85392 /* CSGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGameModel.h; sourceTree = "<group>"; };
+		C7B18AE118EE1B5600A85392 /* CSGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGameModel.m; sourceTree = "<group>"; };
+		C7B18AE318EE23D900A85392 /* idol_4-3_GLOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idol_4-3_GLOW.png"; sourceTree = "<group>"; };
+		C7B18AE418EE23D900A85392 /* idol_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idol_4-3.png"; sourceTree = "<group>"; };
 		C7CD458A18ED093F0045B14D /* archer_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archer_placeholder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,8 +195,8 @@
 		C779868A18EB673B005F6CAA /* SpriteKitSimpleGameResources */ = {
 			isa = PBXGroup;
 			children = (
+				C7B18ADA18EE168800A85392 /* sprites.atlas */,
 				C779868B18EB673B005F6CAA /* Sounds */,
-				C779868E18EB673B005F6CAA /* sprites.atlas */,
 			);
 			path = SpriteKitSimpleGameResources;
 			sourceTree = "<group>";
@@ -220,6 +231,8 @@
 		C77BA6C218EE13F2003C321B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C7B18AE018EE1B5600A85392 /* CSGameModel.h */,
+				C7B18AE118EE1B5600A85392 /* CSGameModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -227,6 +240,10 @@
 		C7CD458918ED09220045B14D /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C7B18AE318EE23D900A85392 /* idol_4-3_GLOW.png */,
+				C7B18AE418EE23D900A85392 /* idol_4-3.png */,
+				C7B18ADE18EE1A2300A85392 /* archer_4-3_FLIPPED.png */,
+				C7B18ADC18EE180800A85392 /* archer_4-3.png */,
 				C7CD458A18ED093F0045B14D /* archer_placeholder.png */,
 			);
 			name = Sprites;
@@ -310,12 +327,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7CD458B18ED093F0045B14D /* archer_placeholder.png in Resources */,
-				C779869118EB673B005F6CAA /* sprites.atlas in Resources */,
+				C7B18AE518EE23D900A85392 /* idol_4-3_GLOW.png in Resources */,
 				C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */,
+				C7B18ADB18EE168800A85392 /* sprites.atlas in Resources */,
 				C769955D18EB49180001B9CA /* InfoPlist.strings in Resources */,
 				C769957018EB49180001B9CA /* Images.xcassets in Resources */,
+				C7B18AE618EE23D900A85392 /* idol_4-3.png in Resources */,
+				C7B18ADD18EE180800A85392 /* archer_4-3.png in Resources */,
 				C769956E18EB49180001B9CA /* Spaceship.png in Resources */,
 				C769956618EB49180001B9CA /* Main.storyboard in Resources */,
+				C7B18ADF18EE1A2300A85392 /* archer_4-3_FLIPPED.png in Resources */,
 				C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B18AE218EE1B5600A85392 /* CSGameModel.m in Sources */,
 				C769956C18EB49180001B9CA /* CSMyScene.m in Sources */,
 				C769956318EB49180001B9CA /* CSAppDelegate.m in Sources */,
 				C769955F18EB49180001B9CA /* main.m in Sources */,

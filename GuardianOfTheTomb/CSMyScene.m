@@ -17,6 +17,7 @@
     float _playerAngle;
     float _addAmount;
     SKShapeNode* _playerBoundingCircle;
+    
 }
 
 
@@ -45,18 +46,26 @@
         CGRectDivide(self.frame, &_leftMoveRect, &_rightMoveRect, self.frame.size.width / 2.0f, CGRectMinXEdge);
 
         // Initialize the player sprite
-        self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"archer_placeholder"];
+        self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"archer_4-3"];
         
         // Initialize players angle.
         _playerAngle = 90;
         
+        //rotate the player sprite to the appropriate degree
+        [self.playerSprite runAction:[SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle + 180)] duration:0]];
+        
         // Initialize players position
         self.playerSprite.position = CGPointMake( [self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+        
+        //set up the idol sprite
+        self.idolSprite = [SKSpriteNode spriteNodeWithImageNamed:@"idol_4-3"];
+        self.idolSprite.position = CGPointMake(_circleCenterX, _circleCenterY);
         
         
         // Add the player sprite to the scene
         [self addChild:self.playerSprite];
         [self addChild:_playerBoundingCircle];
+        [self addChild:self.idolSprite];
         
     }
 
@@ -90,23 +99,58 @@
 {
     _addAmount = 3.0f;
     _playerAngle += _addAmount;
+    
+    
+    float angleToRotateSpriteBy;
+    if (CGRectContainsPoint(_leftMoveRect, self.playerSprite.position))
+    {
+        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3"]];
+        [self.playerSprite runAction:changePlayerSprite];
+        angleToRotateSpriteBy = _playerAngle + 180;
+    }
+    else
+    {
+        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3_FLIPPED"]];
+        [self.playerSprite runAction:changePlayerSprite];
+        angleToRotateSpriteBy = _playerAngle;
+    }
+    
     self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
-    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle+180)] duration:0];
+    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(angleToRotateSpriteBy)] duration:0];
     [self.playerSprite runAction:rotateSprite];
     SKAction * moveLeft = [SKAction performSelector:@selector(startMovingPlayerLeft) onTarget:self];
     [self.playerSprite runAction:moveLeft];
-
+    
+    //rotate the sprite
 }
 
 -(void) startMovingPlayerRight
 {
     _addAmount = -3.0f;
     _playerAngle += _addAmount;
+    
+    float angleToRotateSpriteBy;
+    if (CGRectContainsPoint(_leftMoveRect, self.playerSprite.position))
+    {
+        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3"]];
+        [self.playerSprite runAction:changePlayerSprite];
+        angleToRotateSpriteBy = _playerAngle + 180;
+    }
+    else
+    {
+        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3_FLIPPED"]];
+        [self.playerSprite runAction:changePlayerSprite];
+        angleToRotateSpriteBy = _playerAngle;
+    }
+    
     self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
-    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle+180)] duration:0];
+    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(angleToRotateSpriteBy)] duration:0];
     [self.playerSprite runAction:rotateSprite];
     SKAction * moveRight = [SKAction performSelector:@selector(startMovingPlayerRight) onTarget:self];
     [self.playerSprite runAction:moveRight];
+    
+
+
     
 }
 

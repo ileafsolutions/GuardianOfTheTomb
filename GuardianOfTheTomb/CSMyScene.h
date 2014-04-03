@@ -11,8 +11,11 @@
 @interface CSMyScene : SKScene
 
 @property SKSpriteNode * playerSprite;
+@property SKSpriteNode * idolSprite;
+
 @property float rateOfFire;
 @property (nonatomic) NSTimeInterval lastShotTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+@property (nonatomic) BOOL gameOngoing;
 
 @end
