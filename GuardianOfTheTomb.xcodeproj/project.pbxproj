@@ -53,10 +53,10 @@
 		C769956118EB49180001B9CA /* CSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSAppDelegate.h; sourceTree = "<group>"; };
 		C769956218EB49180001B9CA /* CSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSAppDelegate.m; sourceTree = "<group>"; };
 		C769956518EB49180001B9CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C769956718EB49180001B9CA /* CSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSViewController.h; sourceTree = "<group>"; };
-		C769956818EB49180001B9CA /* CSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSViewController.m; sourceTree = "<group>"; };
-		C769956A18EB49180001B9CA /* CSMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMyScene.h; sourceTree = "<group>"; };
-		C769956B18EB49180001B9CA /* CSMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSMyScene.m; sourceTree = "<group>"; };
+		C769956718EB49180001B9CA /* CSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CSViewController.h; path = GuardianOfTheTomb/CSViewController.h; sourceTree = "<group>"; };
+		C769956818EB49180001B9CA /* CSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CSViewController.m; path = GuardianOfTheTomb/CSViewController.m; sourceTree = "<group>"; };
+		C769956A18EB49180001B9CA /* CSMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CSMyScene.h; path = GuardianOfTheTomb/CSMyScene.h; sourceTree = "<group>"; };
+		C769956B18EB49180001B9CA /* CSMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CSMyScene.m; path = GuardianOfTheTomb/CSMyScene.m; sourceTree = "<group>"; };
 		C769956D18EB49180001B9CA /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		C769956F18EB49180001B9CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C769957518EB49190001B9CA /* GuardianOfTheTombTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuardianOfTheTombTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +98,9 @@
 		C769954418EB49180001B9CA = {
 			isa = PBXGroup;
 			children = (
+				C77BA6C218EE13F2003C321B /* Model */,
+				C77BA6C118EE11CC003C321B /* Views */,
+				C77BA6C018EE10B1003C321B /* Controllers */,
 				C7CD458918ED09220045B14D /* Sprites */,
 				C779868918EB6724005F6CAA /* Placeholder files */,
 				C769955818EB49180001B9CA /* GuardianOfTheTomb */,
@@ -134,10 +137,6 @@
 				C769956118EB49180001B9CA /* CSAppDelegate.h */,
 				C769956218EB49180001B9CA /* CSAppDelegate.m */,
 				C769956418EB49180001B9CA /* Main.storyboard */,
-				C769956718EB49180001B9CA /* CSViewController.h */,
-				C769956818EB49180001B9CA /* CSViewController.m */,
-				C769956A18EB49180001B9CA /* CSMyScene.h */,
-				C769956B18EB49180001B9CA /* CSMyScene.m */,
 				C769956D18EB49180001B9CA /* Spaceship.png */,
 				C769956F18EB49180001B9CA /* Images.xcassets */,
 				C769955918EB49180001B9CA /* Supporting Files */,
@@ -198,6 +197,31 @@
 				C779868D18EB673B005F6CAA /* pew-pew-lei.caf */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C77BA6C018EE10B1003C321B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C769956718EB49180001B9CA /* CSViewController.h */,
+				C769956818EB49180001B9CA /* CSViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C77BA6C118EE11CC003C321B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C769956A18EB49180001B9CA /* CSMyScene.h */,
+				C769956B18EB49180001B9CA /* CSMyScene.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C77BA6C218EE13F2003C321B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		C7CD458918ED09220045B14D /* Sprites */ = {
