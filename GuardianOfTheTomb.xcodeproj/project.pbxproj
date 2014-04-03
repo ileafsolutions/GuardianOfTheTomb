@@ -27,6 +27,7 @@
 		C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868C18EB673B005F6CAA /* background-music-aac.caf */; };
 		C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = C779868D18EB673B005F6CAA /* pew-pew-lei.caf */; };
 		C779869118EB673B005F6CAA /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C779868E18EB673B005F6CAA /* sprites.atlas */; };
+		C7CD458B18ED093F0045B14D /* archer_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CD458A18ED093F0045B14D /* archer_placeholder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		C779868C18EB673B005F6CAA /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		C779868D18EB673B005F6CAA /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		C779868E18EB673B005F6CAA /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		C7CD458A18ED093F0045B14D /* archer_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archer_placeholder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		C769954418EB49180001B9CA = {
 			isa = PBXGroup;
 			children = (
+				C7CD458918ED09220045B14D /* Sprites */,
 				C779868918EB6724005F6CAA /* Placeholder files */,
 				C769955818EB49180001B9CA /* GuardianOfTheTomb */,
 				C769957C18EB49190001B9CA /* GuardianOfTheTombTests */,
@@ -197,6 +200,14 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		C7CD458918ED09220045B14D /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				C7CD458A18ED093F0045B14D /* archer_placeholder.png */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7CD458B18ED093F0045B14D /* archer_placeholder.png in Resources */,
 				C779869118EB673B005F6CAA /* sprites.atlas in Resources */,
 				C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */,
 				C769955D18EB49180001B9CA /* InfoPlist.strings in Resources */,

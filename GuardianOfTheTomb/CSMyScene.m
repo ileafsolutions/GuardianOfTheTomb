@@ -47,7 +47,7 @@
 
         
         //initialize the player sprite
-        self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
+        self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"archer_placeholder"];
         _playerAngle = 90;
         self.playerSprite.position = CGPointMake( [self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
         _playerIsMoving = FALSE;
@@ -81,15 +81,22 @@
 
 }
 
+-(float) convertDegreesToRadians:(float)degrees
+{
+    return degrees * (M_PI / 180);
+}
+
 
 
 //0 is left, 1 is right
 -(void) startMovingPlayerLeft
 {
 //    _addAmount = (direction == 0) ? 2.0f : -2.0f;
-    _addAmount = 2.0f;
+    _addAmount = 3.0f;
     _playerAngle += _addAmount;
     self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle+180)] duration:0];
+    [self.playerSprite runAction:rotateSprite];
     SKAction * moveLeft = [SKAction performSelector:@selector(startMovingPlayerLeft) onTarget:self];
     [self.playerSprite runAction:moveLeft];
 
@@ -97,11 +104,15 @@
 
 -(void) startMovingPlayerRight
 {
-    _addAmount = -2.0f;
+    _addAmount = -3.0f;
     _playerAngle += _addAmount;
     self.playerSprite.position = CGPointMake([self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
+    SKAction * rotateSprite = [SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle+180)] duration:0];
+    [self.playerSprite runAction:rotateSprite];
     SKAction * moveRight = [SKAction performSelector:@selector(startMovingPlayerRight) onTarget:self];
     [self.playerSprite runAction:moveRight];
+
+    
 }
 
 //0 is left, 1 is right
