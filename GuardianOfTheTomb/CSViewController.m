@@ -8,11 +8,12 @@
 
 #import "CSViewController.h"
 #import "CSMyScene.h"
+#import "CSMyScene.h"
 
 @implementation CSViewController
 {
     SKView* _gameView;
-    SKScene* _gameScene;
+    CSMyScene* _gameScene;
 }
 
 //- (void)viewDidLoad
@@ -48,8 +49,14 @@
     _gameScene = [CSMyScene sceneWithSize:_gameView.bounds.size];
     _gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
+    // Set the rate of fire to the default rate.
+    _gameScene.rateOfFire = 1.0f;
+    
+    
     // Present the scene.
     [_gameView presentScene:_gameScene];
+    
+    
     
     
 }

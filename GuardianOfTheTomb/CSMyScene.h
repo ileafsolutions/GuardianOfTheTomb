@@ -12,4 +12,7 @@
 
 @property SKSpriteNode * playerSprite;
 @property float rateOfFire;
+@property (nonatomic) NSTimeInterval lastShotTimeInterval;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
 @end
