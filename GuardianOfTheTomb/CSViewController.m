@@ -50,7 +50,7 @@
     _gameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Set the rate of fire to the default rate.
-    _gameScene.rateOfFire = 1.0f;
+    _gameScene.rateOfFire = 10.0f;
     
     
     // Present the scene.

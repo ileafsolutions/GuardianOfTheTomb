@@ -17,7 +17,6 @@
     float _playerAngle;
     float _addAmount;
     SKShapeNode* _playerBoundingCircle;
-    SKSpriteNode* _projectileSprite;
 }
 
 
@@ -54,13 +53,10 @@
         // Initialize players position
         self.playerSprite.position = CGPointMake( [self playerXPosition:_playerAngle], [self playerYPosition:_playerAngle]);
         
-        // Initialize the projectile sprite
-        _projectileSprite = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
         
         // Add the player sprite to the scene
         [self addChild:self.playerSprite];
         [self addChild:_playerBoundingCircle];
-        [self addChild:_projectileSprite];
         
     }
 
@@ -145,6 +141,8 @@
 -(void) fireBow
 {
     // Set projectile at players position.
+    SKSpriteNode* _projectileSprite = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
+
     _projectileSprite.position = self.playerSprite.position;
     
     CGPoint offset = vectorSub(self.playerSprite.position, CGPointMake(_circleCenterX, _circleCenterY));
@@ -154,7 +152,7 @@
     CGPoint shootAmount = vectorMult(direction, 1000);
     CGPoint realDest = vectorAdd(shootAmount, _projectileSprite.position);
     
-    float velocity = 480.0f/1.0f;
+    float velocity = 180.0f/1.0f;
     float realMoveDuration = self.size.width / velocity;
     SKAction* actionMove = [SKAction moveTo:realDest duration:realMoveDuration];
     SKAction* actionMoveDone = [SKAction removeFromParent];
