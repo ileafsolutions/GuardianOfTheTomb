@@ -40,7 +40,7 @@
         _playerBoundingCircle.path = myPath;
         _playerBoundingCircle.lineWidth = 1.0f;
         _playerBoundingCircle.strokeColor = [SKColor blackColor];
-        _playerBoundingCircle.hidden = FALSE;
+        _playerBoundingCircle.hidden = TRUE;
         
         // Initialize the move rectangles.
         CGRectDivide(self.frame, &_leftMoveRect, &_rightMoveRect, self.frame.size.width / 2.0f, CGRectMinXEdge);
