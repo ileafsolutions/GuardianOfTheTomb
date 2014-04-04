@@ -18,6 +18,11 @@
     float _addAmount;
     SKShapeNode* _playerBoundingCircle;
     
+    //for different player orientations
+    SKTexture * _playerSpriteFacingLeft;
+    SKTexture * _playerSpriteFacingRight;
+    
+    
 }
 
 
@@ -25,8 +30,12 @@
 {
     if (self = [super initWithSize:size])
     {
-        // Configure background color of scene.
-        self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        //set up the background image sprite
+        self.backgroundImageSprite =[SKSpriteNode spriteNodeWithImageNamed:@"background_4-3"];
+        
+        CGPoint screenCenter = CGPointMake(self.size.width / 2, self.size.height/2);
+        self.backgroundImageSprite.position = screenCenter;
+        self.backgroundImageSprite.blendMode = SKBlendModeReplace;
         
         // Create the bounding circle for the player's movement
         _playerBoundingCircle = [[SKShapeNode alloc] init];
@@ -48,6 +57,10 @@
         // Initialize the player sprite
         self.playerSprite = [SKSpriteNode spriteNodeWithImageNamed:@"archer_4-3"];
         
+        //set up alternate sprites
+        _playerSpriteFacingLeft = [SKTexture textureWithImageNamed:@"archer_4-3"];
+        _playerSpriteFacingRight = [SKTexture textureWithImageNamed:@"archer_4-3_FLIPPED"];
+        
         // Initialize players angle.
         _playerAngle = 90;
         
@@ -61,8 +74,11 @@
         self.idolSprite = [SKSpriteNode spriteNodeWithImageNamed:@"idol_4-3"];
         self.idolSprite.position = CGPointMake(_circleCenterX, _circleCenterY);
         
+
         
-        // Add the player sprite to the scene
+        
+        // Add the sprites to the scene
+        [self addChild:self.backgroundImageSprite];
         [self addChild:self.playerSprite];
         [self addChild:_playerBoundingCircle];
         [self addChild:self.idolSprite];
@@ -94,7 +110,7 @@
     return degrees * (M_PI / 180);
 }
 
-
+//Move the player left while also rotating the player sprite.
 -(void) startMovingPlayerLeft
 {
     _addAmount = 3.0f;
@@ -104,13 +120,14 @@
     float angleToRotateSpriteBy;
     if (CGRectContainsPoint(_leftMoveRect, self.playerSprite.position))
     {
-        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3"]];
+        
+        SKAction* changePlayerSprite = [SKAction setTexture:_playerSpriteFacingLeft];
         [self.playerSprite runAction:changePlayerSprite];
         angleToRotateSpriteBy = _playerAngle + 180;
     }
     else
     {
-        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3_FLIPPED"]];
+        SKAction* changePlayerSprite = [SKAction setTexture:_playerSpriteFacingRight];
         [self.playerSprite runAction:changePlayerSprite];
         angleToRotateSpriteBy = _playerAngle;
     }
@@ -121,9 +138,9 @@
     SKAction * moveLeft = [SKAction performSelector:@selector(startMovingPlayerLeft) onTarget:self];
     [self.playerSprite runAction:moveLeft];
     
-    //rotate the sprite
 }
 
+//Move the player right while also rotating the player sprite.
 -(void) startMovingPlayerRight
 {
     _addAmount = -3.0f;
@@ -132,13 +149,15 @@
     float angleToRotateSpriteBy;
     if (CGRectContainsPoint(_leftMoveRect, self.playerSprite.position))
     {
-        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3"]];
+
+        SKAction* changePlayerSprite = [SKAction setTexture:_playerSpriteFacingLeft];
         [self.playerSprite runAction:changePlayerSprite];
         angleToRotateSpriteBy = _playerAngle + 180;
     }
     else
     {
-        SKAction* changePlayerSprite = [SKAction setTexture:[SKTexture textureWithImageNamed:@"archer_4-3_FLIPPED"]];
+
+        SKAction* changePlayerSprite = [SKAction setTexture:_playerSpriteFacingRight];
         [self.playerSprite runAction:changePlayerSprite];
         angleToRotateSpriteBy = _playerAngle;
     }
@@ -185,7 +204,7 @@
 -(void) fireBow
 {
     // Set projectile at players position.
-    SKSpriteNode* _projectileSprite = [SKSpriteNode spriteNodeWithImageNamed:@"projectile"];
+    SKSpriteNode* _projectileSprite = [SKSpriteNode spriteNodeWithImageNamed:@"arrow_4-3"];
 
     _projectileSprite.position = self.playerSprite.position;
     
@@ -193,14 +212,15 @@
     [self addChild:_projectileSprite];
     
     CGPoint direction = vectorNormalize(offset);
-    CGPoint shootAmount = vectorMult(direction, 1000);
+    CGPoint shootAmount = vectorMult(direction, 500);
     CGPoint realDest = vectorAdd(shootAmount, _projectileSprite.position);
     
     float velocity = 180.0f/1.0f;
     float realMoveDuration = self.size.width / velocity;
     SKAction* actionMove = [SKAction moveTo:realDest duration:realMoveDuration];
     SKAction* actionMoveDone = [SKAction removeFromParent];
-    [_projectileSprite runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    SKAction* rotateArrow = [SKAction rotateToAngle:[self convertDegreesToRadians:(_playerAngle + 90)] duration:0];
+    [_projectileSprite runAction:[SKAction sequence:@[rotateArrow, actionMove, actionMoveDone]]];
     
     
 }

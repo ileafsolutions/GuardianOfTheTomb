@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70668DA18EE46240076ED4F /* background_4-3_WIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668D818EE46240076ED4F /* background_4-3_WIDE.png */; };
+		C70668DB18EE46240076ED4F /* background_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668D918EE46240076ED4F /* background_4-3.png */; };
+		C70668DD18EE52A50076ED4F /* arrow_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668DC18EE52A50076ED4F /* arrow_4-3.png */; };
 		C769955118EB49180001B9CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955018EB49180001B9CA /* Foundation.framework */; };
 		C769955318EB49180001B9CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955218EB49180001B9CA /* CoreGraphics.framework */; };
 		C769955518EB49180001B9CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955418EB49180001B9CA /* UIKit.framework */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C70668D818EE46240076ED4F /* background_4-3_WIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_4-3_WIDE.png"; sourceTree = "<group>"; };
+		C70668D918EE46240076ED4F /* background_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_4-3.png"; sourceTree = "<group>"; };
+		C70668DC18EE52A50076ED4F /* arrow_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_4-3.png"; sourceTree = "<group>"; };
 		C769954D18EB49180001B9CA /* GuardianOfTheTomb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuardianOfTheTomb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C769955018EB49180001B9CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C769955218EB49180001B9CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -240,6 +246,9 @@
 		C7CD458918ED09220045B14D /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				C70668DC18EE52A50076ED4F /* arrow_4-3.png */,
+				C70668D818EE46240076ED4F /* background_4-3_WIDE.png */,
+				C70668D918EE46240076ED4F /* background_4-3.png */,
 				C7B18AE318EE23D900A85392 /* idol_4-3_GLOW.png */,
 				C7B18AE418EE23D900A85392 /* idol_4-3.png */,
 				C7B18ADE18EE1A2300A85392 /* archer_4-3_FLIPPED.png */,
@@ -330,13 +339,16 @@
 				C7B18AE518EE23D900A85392 /* idol_4-3_GLOW.png in Resources */,
 				C779868F18EB673B005F6CAA /* background-music-aac.caf in Resources */,
 				C7B18ADB18EE168800A85392 /* sprites.atlas in Resources */,
+				C70668DB18EE46240076ED4F /* background_4-3.png in Resources */,
 				C769955D18EB49180001B9CA /* InfoPlist.strings in Resources */,
 				C769957018EB49180001B9CA /* Images.xcassets in Resources */,
+				C70668DD18EE52A50076ED4F /* arrow_4-3.png in Resources */,
 				C7B18AE618EE23D900A85392 /* idol_4-3.png in Resources */,
 				C7B18ADD18EE180800A85392 /* archer_4-3.png in Resources */,
 				C769956E18EB49180001B9CA /* Spaceship.png in Resources */,
 				C769956618EB49180001B9CA /* Main.storyboard in Resources */,
 				C7B18ADF18EE1A2300A85392 /* archer_4-3_FLIPPED.png in Resources */,
+				C70668DA18EE46240076ED4F /* background_4-3_WIDE.png in Resources */,
 				C779869018EB673B005F6CAA /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
