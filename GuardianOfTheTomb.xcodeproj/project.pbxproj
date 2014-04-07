@@ -10,6 +10,7 @@
 		C70668DA18EE46240076ED4F /* background_4-3_WIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668D818EE46240076ED4F /* background_4-3_WIDE.png */; };
 		C70668DB18EE46240076ED4F /* background_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668D918EE46240076ED4F /* background_4-3.png */; };
 		C70668DD18EE52A50076ED4F /* arrow_4-3.png in Resources */ = {isa = PBXBuildFile; fileRef = C70668DC18EE52A50076ED4F /* arrow_4-3.png */; };
+		C73CC82018F2526C00A29712 /* CSWaveTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = C73CC81F18F2526C00A29712 /* CSWaveTimer.m */; };
 		C769955118EB49180001B9CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955018EB49180001B9CA /* Foundation.framework */; };
 		C769955318EB49180001B9CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955218EB49180001B9CA /* CoreGraphics.framework */; };
 		C769955518EB49180001B9CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C769955418EB49180001B9CA /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		C70668D818EE46240076ED4F /* background_4-3_WIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_4-3_WIDE.png"; sourceTree = "<group>"; };
 		C70668D918EE46240076ED4F /* background_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_4-3.png"; sourceTree = "<group>"; };
 		C70668DC18EE52A50076ED4F /* arrow_4-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_4-3.png"; sourceTree = "<group>"; };
+		C73CC81E18F2526C00A29712 /* CSWaveTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSWaveTimer.h; sourceTree = "<group>"; };
+		C73CC81F18F2526C00A29712 /* CSWaveTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSWaveTimer.m; sourceTree = "<group>"; };
 		C769954D18EB49180001B9CA /* GuardianOfTheTomb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuardianOfTheTomb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C769955018EB49180001B9CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C769955218EB49180001B9CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C73CC82118F27CC700A29712 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				C73CC81E18F2526C00A29712 /* CSWaveTimer.h */,
+				C73CC81F18F2526C00A29712 /* CSWaveTimer.m */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
 		C769954418EB49180001B9CA = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +249,7 @@
 		C77BA6C218EE13F2003C321B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C73CC82118F27CC700A29712 /* Timer */,
 				C7B18AE018EE1B5600A85392 /* CSGameModel.h */,
 				C7B18AE118EE1B5600A85392 /* CSGameModel.m */,
 			);
@@ -370,6 +383,7 @@
 			files = (
 				C7B18AE218EE1B5600A85392 /* CSGameModel.m in Sources */,
 				C769956C18EB49180001B9CA /* CSMyScene.m in Sources */,
+				C73CC82018F2526C00A29712 /* CSWaveTimer.m in Sources */,
 				C769956318EB49180001B9CA /* CSAppDelegate.m in Sources */,
 				C769955F18EB49180001B9CA /* main.m in Sources */,
 				C769956918EB49180001B9CA /* CSViewController.m in Sources */,

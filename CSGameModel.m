@@ -8,15 +8,23 @@
 
 #import "CSGameModel.h"
 
+//Timing related variables
+static const int timeBeforeWaveStarts = 2;
+static const int lengthOfFirstWaveHalf = 15;
+static const int lengthOfSecondWaveHalf = 10;
+static const int respawnRate = 3;
+
+
+
 @implementation CSGameModel
 {
-    NSDate * _currenTime;
+    
     double _shootingPhaseLength;
     double _protectingPhaseLength;
     
 }
 
-@synthesize shootingPhaseLength = _shootingPhaseLength;
+
 
 -(id) init
 {
@@ -25,24 +33,59 @@
     if (self == nil)
         return nil;
     
-    //Length of the waves
-    _shootingPhaseLength = 30 + sqrt(self.currentWave);
-    _protectingPhaseLength = 10;
+    _shootingPhaseLength = lengthOfFirstWaveHalf;
+    _protectingPhaseLength = lengthOfSecondWaveHalf;
+    
+    //Returns 0 if the game is in the shooting phase, or 1 if the game is in the protecting phase, or 2 if the game is between waves
+    self.gameState = 2;
+    //Create the timer with the length of the first wave and the respawn rate of the skeletons
+    self.timer = [[CSWaveTimer alloc] initWithLongInterval:_shootingPhaseLength andShortInterval:respawnRate andDelegate:self];
     
     return self;
 }
 
--(double) shootingPhaseLength
+#pragma mark Timing delegate methods
+
+//This is a delegate method called when the timer's over arching time limit is reached
+-(void) longTimerExpired:(CSWaveTimer *)gameTimer
 {
-    return 30 + 2 * sqrt(self.currentWave);
+ 
+    //Check to see which part of the wave expired
+    //If the timer that just expired was for the wave intermissions
+    if (self.timer.longInterval == timeBeforeWaveStarts)
+    {
+        
+    }
+    //If the timer that expired was for the shooting phase
+    else if (self.timer.longInterval == _shootingPhaseLength)
+    {
+        
+    }
+    //If the timer that expired was for the protecting phase
+    else if (self.timer.longInterval == _protectingPhaseLength)
+    {
+        
+    }
+    
+    
 }
 
--(double) protectingPhaseLength
+//This is a timer's delegate method that is called when the period timer is called, usually several times per longtimer
+//This method will probably be used to spawn new enemies for every wave
+-(void) shortTimerExpired:(CSWaveTimer *)gameTimer time:(float)time longInterval:(float)longInterval
 {
-    return 10 + 2 * sqrt(self.currentWave);
+    [self.delegate spawnMonsters:self meleeSkeletons:1 andRangedSkeletons:1];
 }
+
+
+#pragma mark Game model methods
 
 -(void) startGame
+{
+    [self.timer startTimer];
+}
+
+-(void) saveGame
 {
     
 }
@@ -50,12 +93,14 @@
 
 -(void) pauseGame
 {
-    
+    self.gameIsOngoing = FALSE;
+    [self.timer pauseTimer];
 }
 
 
 -(void) resumeGame
 {
-    
+    self.gameIsOngoing = TRUE;
+    [self.timer unPauseTimer];
 }
 @end

@@ -88,6 +88,8 @@
     return self;
 }
 
+#pragma mark Private methods
+
 -(float) playerXPosition:(float) degrees
 {
     return _circleCenterX + cosf(degrees * (M_PI / 180)) * _circleRadius;
@@ -254,6 +256,21 @@
     
 }
 
+#pragma mark Public methods
+
+-(void) spawnMeleeSkeletons:(int)melee andRangedSkeletons:(int)ranged
+{
+    NSLog(@"In game scene: Spawning %i melee skeletons and %i ranged skeletons.", melee, ranged);
+    SKSpriteNode * skeleton = [SKSpriteNode spriteNodeWithImageNamed:@"archer_placeholder"];
+    skeleton.position = CGPointMake(0, 0);
+    [self addChild:skeleton];
+    SKAction * moveToCenter = [SKAction moveTo:self.idolSprite.position duration:2];
+    SKAction * removeSkeleton = [SKAction removeFromParent];
+    [skeleton runAction:[SKAction sequence:@[moveToCenter, removeSkeleton]]];
+}
+
+
+#pragma mark Vector methods
 static inline CGPoint vectorAdd(CGPoint a, CGPoint b)
 {
     return CGPointMake(a.x + b.x, a.y + b.y);

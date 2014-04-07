@@ -14,6 +14,7 @@
 {
     SKView* _gameView;
     CSMyScene* _gameScene;
+    CSGameModel* _model;
 }
 
 //- (void)viewDidLoad
@@ -35,15 +36,26 @@
 
 
 
+
+
 //use this instead of viewdidload to make sure everything is loaded
 -(void) viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     
+
+    
     // Configure the view.
     _gameView = (SKView *)self.view;
     _gameView.showsFPS = YES;
     _gameView.showsNodeCount = YES;
+    
+    
+    //create and initialize the game model
+    _model = [[CSGameModel alloc] init];
+    [_model setDelegate:self];
+    [_model startGame];
+
     
     // Create and configure the scene.
     _gameScene = [CSMyScene sceneWithSize:_gameView.bounds.size];
@@ -60,6 +72,31 @@
     
     
 }
+
+
+#pragma mark CSGameModel delegate methods
+
+-(void) waveEnded:(CSGameModel *)gameModel
+{
+    
+}
+
+-(void) waveStarted:(CSGameModel *)gameModel
+{
+    
+}
+
+-(void) spawnMonsters:(CSGameModel *)gameModel meleeSkeletons:(int)melee andRangedSkeletons:(int)ranged
+{
+    [_gameScene spawnMeleeSkeletons:melee andRangedSkeletons:ranged];
+
+}
+
+-(void) gameOver:(CSGameModel *)gameModel
+{
+    
+}
+
 
 - (BOOL)shouldAutorotate
 {

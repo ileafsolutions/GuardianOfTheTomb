@@ -19,4 +19,6 @@
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property (nonatomic) BOOL gameOngoing;
 
+-(void) spawnMeleeSkeletons:(int) melee andRangedSkeletons:(int) ranged;
+
 @end
